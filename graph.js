@@ -13,13 +13,17 @@ function loadFile(path, callback){
 
 function parseData(text){
   const data = d3.csvParseRows(text, (d, i)=>{
-    const row = {};
-    d.forEach((val, idx)=>{
-      if (idx === 0){
-        row[x] = Number(d[0])
+
+    let row = {};
+
+    d.forEach((value, idx)=>{
+      if (value.length === 0){
+        return;
+      }else if (idx === 0){
+        row["x"] = +value;
       }else{
         let id = "y" + idx.toString();
-        row[id] = +d[idx];
+        row[id] = +value;
       }
     })
     return row;
@@ -72,7 +76,7 @@ const yAxis = d3.axisLeft(y)
 
 function initGraph(data){
 
-  const columns = Object.keys(data).filter((key)=>{return key != "x"}).map((id)=>{
+  const columns = Object.keys(data[0]).filter((value)=>{return (value !== "x")}).map((id)=>{
     return {
       id: id,
       values: data.map(function(d) {
@@ -161,8 +165,6 @@ function initGraph(data){
   }
 
 }
-
-// loadFile('/data/freq_domain.txt', (text)=>{initGraph(parseData(text))});
 
   // function zoomed() {
   //   container.attr("transform", d3.event.transform);
