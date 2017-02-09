@@ -64,12 +64,10 @@ const x = d3.scaleLinear().range([0, width]),
       y2 = d3.scaleLinear().range([height2, 0]),
       z = d3.scaleOrdinal(d3.schemeCategory10);
 
-
 const xAxis = d3.axisBottom(x)
   .ticks(20, "s")
 const xAxis2 = d3.axisBottom(x2)
   .ticks(20, "s")
-
 const yAxis = d3.axisLeft(y)
   .ticks(10, "s")
 
@@ -164,6 +162,11 @@ function initGraph(data){
 
   }
 
+}
+
+function clearGraph(){
+  focus.selectAll("*").remove();
+  context.selectAll("*").remove();
 }
 
   // function zoomed() {
