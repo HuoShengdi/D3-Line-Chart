@@ -38,8 +38,8 @@ window.parseData = parseData;
 const timeButton = document.getElementById('time');
 const freqButton = document.getElementById('freq');
 
-timeButton.onclick = displayGraph("/data/time_domain.txt");
-freqButton.onclick = displayGraph("/data/freq_domain.txt");
+timeButton.onclick = displayGraph("/D3-Line-Chart/data/time_domain.txt");
+freqButton.onclick = displayGraph("/D3-Line-Chart/data/freq_domain.txt");
 
 const margin = {top: 10, right: 10, bottom: 100, left: 40},
   margin2 = {top: 430, right: 10, bottom: 20, left: 40},
