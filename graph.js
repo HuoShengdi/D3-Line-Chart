@@ -155,7 +155,7 @@ function initGraph(data){
   function brushed() {
     const s = d3.event.selection;
     if (!s) {
-      x.domain(x2.domain());
+      x.domain(x0);
     }else {
       x.domain(s.map(x2.invert, x2));
     }
@@ -164,7 +164,6 @@ function initGraph(data){
     focus.select(".y.axis").call(yAxis);
     focus.selectAll("path.line")
       .attr("d", function(d) { return line(d.values); });
-
   }
 
 }
